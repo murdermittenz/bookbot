@@ -1,2 +1,2 @@
 # bookbot
-Repository for the bookbot project.
+BookBot is my first project!
