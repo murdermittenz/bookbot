@@ -1,4 +1,9 @@
+import sys
 from stats import word_count
+
+if len(sys.argv) != 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
 
 def count_chars(text):
     char_counts = {}
@@ -10,7 +15,7 @@ def count_chars(text):
             char_counts[char] = 1
     return char_counts
 
-with open("books/frankenstein.txt") as f:
+with open(sys.argv[1]) as f:
     text = f.read()
     number_of_characters = count_chars(text)
 
@@ -25,10 +30,10 @@ def sort_on(dict):
 
 char_list.sort(reverse=True, key=sort_on)
 
-print("--- Begin report of books/frankenstein.txt ---")
-print(f"{word_count()} words found in the document\n")
+print(f"--- Begin report of {sys.argv[1]} ---")
+print(f"{word_count(sys.argv[1])} words found in the document\n")
 
 for char_dict in char_list:
-    print(f"The '{char_dict['char']}' character was found {char_dict['num']} times")
+    print(f"{char_dict['char']}: {char_dict['num']}")
 
 print("--- End report ---")
